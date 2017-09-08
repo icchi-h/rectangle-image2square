@@ -7,7 +7,7 @@ __doc__
 """
 
 __author__ = "Haruyuki Ichino"
-__version__ = "1.1"
+__version__ = "1.2"
 __date__ = "2017/09/08"
 
 print(__doc__)
@@ -70,7 +70,8 @@ log_dir = "./log/"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 now_str = datetime.now().strftime('%Y%m%d%H%M%S')
-f = open(log_dir+'faild-files_'+now_str+'.txt', 'w')
+log_file = os.path.join(log_dir, 'faild-files_' + now_str + '.txt')
+f = open(log_file, 'w')
 
 
 # counter
