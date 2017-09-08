@@ -7,7 +7,7 @@ __doc__
 """
 
 __author__ = "Haruyuki Ichino"
-__version__ = "1.0"
+__version__ = "1.1"
 __date__ = "2017/09/08"
 
 print(__doc__)
@@ -138,7 +138,6 @@ for tclass in classes:
             base_img[start:end, :] = org_img
             # 縦画像の場合: base_img[:, start:end] = org_img
             processed_img = base_img
-            # merged_img = overlay(base_img, org_img, 0, 0)
         else:
             min_length = min(width, height)
             center_x = int(width / 2)
@@ -156,7 +155,7 @@ for tclass in classes:
         # 画像のりサイズ
         if (FLAGS.resize):
             try:
-                merged_img = cv2.resize(merged_img, (FLAGS.resize, FLAGS.resize))
+                processed_img = cv2.resize(processed_img, (FLAGS.resize, FLAGS.resize))
             except:
                 print("\tError: Faild to resize cropped image")
                 continue
