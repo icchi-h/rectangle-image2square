@@ -7,8 +7,8 @@ __doc__
 """
 
 __author__ = "Haruyuki Ichino"
-__version__ = "1.3"
-__date__ = "2017/09/12"
+__version__ = "1.4"
+__date__ = "2017/09/21"
 
 print(__doc__)
 
@@ -19,6 +19,7 @@ import argparse
 import numpy as np
 import cv2
 import imghdr
+from scipy import ndimage
 from datetime import datetime
 
 
@@ -153,8 +154,12 @@ if __name__ == '__main__':
             # 縦画像のチェック
             if height > width:
                 print("\tError: 読み込まれた画像が縦画像です")
-                f.write(image_path + "\n")
-                continue
+                f.write("元縦画像: " + image_path + "\n")
+
+                # 回転
+                angle = -90
+                image = ndimage.rotate(image, angle)
+                print("\tProcessed: 横画像に修正")
 
             # processing
             square_img = rectangle2square(image, FLAGS.method, MARGIN_COLOR)
